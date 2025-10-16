@@ -19,4 +19,4 @@ sensitivity analysis**
 - **ishigami/**: Scripts for sensitivity analysis (SA) on an analytical function similar to the Ishigami function.  
 - **flood/**: Scripts for SA on the flooding test case.  
 - **gaussian_mixture_samples/**: Scripts to evaluate the performance of AQ on 1D Gaussian mixtures.  
-- **gfunc/**: Scripts for SA on the G-function with ten variables.
+- **gfunc_screening/**: Scripts for SA on the G-function with ten variables.
