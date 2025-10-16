@@ -310,7 +310,8 @@ create_df_plot = function(list_unifs, list_clusts){ #create dataframe to plot th
   return(res)
 }
 
-plot_hybrid_distrib = function(df_plot, names_var,yat = seq(0,1,l=5), ylab = c("0","0.25","0.5","0.75","1"),ysize = 1.4,yname = "Quantiles", cex_legend = 1, inset = c(-0.18,0)){ #plot hybrid mixture
+plot_hybrid_distrib = function(df_plot, names_var,yat = seq(0,1,l=5), ylab = c("0","0.25","0.5","0.75","1"),ysize = 1.4,yname = "Quantiles", cex_legend = 1, inset = c(-0.18,0), save = FALSE, save_name = NULL){ #plot hybrid mixture
+  if(save){pdf(save_name, width = 10,  height = 6,   family = "Helvetica", useDingbats = FALSE, pointsize = 12)}   
   par(mar=c(5.1, 4.1, 4.1, 7.1)+0.8, xpd=TRUE)
   nbpar2 = (nrow(df_plot)/2)%/%2
   vec = seq(-nbpar2/90,nbpar2/90,l=nrow(df_plot)/2)
@@ -332,9 +333,11 @@ plot_hybrid_distrib = function(df_plot, names_var,yat = seq(0,1,l=5), ylab = c("
       }
     }
   }
-  legend("right", legend=(df_plot[seq(2, nrow(df_plot), by=2),1]), fill=color_palette, inset = inset,title="Weights",cex=cex_legend) #legend with weights
+  legend("right", legend=(df_plot[seq(2, nrow(df_plot), by=2),1]), fill=color_palette, inset = inset,title="Weights",cex=cex_legend,bg = "white") #legend with weights
 
   axis(1, labels = names_var, at = grads, cex.axis = 1.6)
+  if(save){dev.off()}
+
 }
 
 plot_clusts = function(clusts, legend = TRUE, colnames = c("x")){ #plot clusters samples
